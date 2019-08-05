@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
+import Pokemon from '../interfaces/Pokemon.interface';
 import Pokedex from '../json/pokedex.json';
 import Types from '../json/types.json';
+import '../scss/PokemonSearch.scss';
 
 console.log(Pokedex);
 console.log(Types);
-
-interface Pokemon {
-    id: number,
-    nameJp: string,
-    nameEn: string,
-    attack: number,
-    defense: number,
-    hp: number,
-    spAttack: number,
-    spDefense: number,
-    speed: number,
-    type01: string,
-    type02: string,
-    imageNumber: string
-}
 
 export default class PokemonSearch extends Component<{}, Pokemon> {
     pokemonRef: React.RefObject<HTMLInputElement>;
     constructor(props: {}) {
         super(props);
         this.state = {
-            id: 0,
+            id: null,
             nameJp: "",
             nameEn: "",
-            attack: 0,
-            defense: 0,
-            hp: 0,
-            spAttack: 0,
-            spDefense: 0,
-            speed: 0,
+            attack: null,
+            defense: null,
+            hp: null,
+            spAttack: null,
+            spDefense: null,
+            speed: null,
             type01: "",
             type02: "",
-            imageNumber: ""
+            imageNumber: "",
+            existence: false
         }
         this.pokemonRef = React.createRef();
     }
@@ -71,7 +59,8 @@ export default class PokemonSearch extends Component<{}, Pokemon> {
                     spAttack: Pokedex[i].base["Sp. Attack"],
                     spDefense: Pokedex[i].base["Sp. Defense"],
                     speed: Pokedex[i].base.Speed,
-                    imageNumber: imageNumber
+                    imageNumber: imageNumber,
+                    existence: true
                 })
             }
         }
@@ -81,20 +70,35 @@ export default class PokemonSearch extends Component<{}, Pokemon> {
         console.log(this.state);
 
         return (
-            <div>
-                <input type="text" ref={this.pokemonRef} placeholder="しらべたいポケモンをいれましょう" />
-                <button onClick={this.onPokemonSearchButton}>けんさく</button>
-                <img src={`${process.env.PUBLIC_URL}/img/${this.state.imageNumber + this.state.nameEn}.png`} alt="" />
-                <p>{this.state.id}</p>
-                <p>{this.state.nameJp}</p>
-                <p>{this.state.attack}</p>
-                <p>{this.state.defense}</p>
-                <p>{this.state.hp}</p>
-                <p>{this.state.spAttack}</p>
-                <p>{this.state.spDefense}</p>
-                <p>{this.state.speed}</p>
-                <p>{this.state.type01}</p>
-                {this.state.type02 && <p>{this.state.type02}</p>}
+            <div className="PokemonSearch">
+                <div className="PokemonSearch__area">
+                    <input className="PokemonSearch__input" type="text" ref={this.pokemonRef} placeholder="検索したいポケモンの名前を入力しよう" />
+                    <button className="PokemonSearch__button" onClick={this.onPokemonSearchButton}>検索</button>
+                </div>
+                {this.state.existence &&
+                    <div className="PokemonSearch__result">
+                        <div className="PokemonSearch__name">
+                            <small>キミが検索したポケモンは...</small>
+                            <strong>{this.state.nameJp}</strong>
+                            <span>だ！</span>
+                        </div>
+                        <div className="PokemonSearch__image">
+                            <img src={`${process.env.PUBLIC_URL}/img/${this.state.imageNumber + this.state.nameEn}.png`} alt="検索したポケモンの画像" />
+                        </div>
+                        <ul className="PokemonSearch__list">
+                            <li className="PokemonSearch__item">{this.state.id}</li>
+                            <li className="PokemonSearch__item">{this.state.attack}</li>
+                            <li className="PokemonSearch__item">{this.state.defense}</li>
+                            <li className="PokemonSearch__item">{this.state.hp}</li>
+                            <li className="PokemonSearch__item">{this.state.spAttack}</li>
+                            <li className="PokemonSearch__item">{this.state.spDefense}</li>
+                            <li className="PokemonSearch__item">{this.state.speed}</li>
+                            <li className="PokemonSearch__item">{this.state.type01}</li>
+                            {this.state.type02 && <li className="PokemonSearch__item">{this.state.type02}</li>
+                            }
+                        </ul>
+                    </div>
+                }
             </div>
         )
     }

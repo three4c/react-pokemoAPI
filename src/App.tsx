@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PokemonSearch from './components/PokemonSearch';
+import './scss/reset.scss';
 import './scss/App.scss';
 
 class App extends Component {

@@ -1,0 +1,118 @@
+.PokemonSearch {
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 10px 10px 0 0 rgba(0,0,0,.25);
+    padding: 120px 120px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+
+    &__area{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__input {
+        border: 5px solid #313550;
+        border-radius: 8px 0 0 8px;
+        color: #313550;
+        letter-spacing: .8px;
+        font-size: 1.6rem;
+        outline: none;
+        padding: 16px;
+        width: 400px;
+        height: 72px;
+
+        &::placeholder {
+            color: #aaa;
+            font-size: 1.6rem;
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    &__button {
+        background: #313550;
+        border-radius: 0 8px 8px 0;
+        color: #fff;
+        font-family: 'M PLUS 1p';
+        font-size: 2.4rem;
+        font-weight: 700;
+        outline: none;
+        letter-spacing: 1.6px;
+        width: 160px;
+        height: 72px;
+    }
+
+    &__name {
+        color: #313550;
+        margin-bottom: 80px;
+
+        small {
+            display: block;
+            color: #313550;
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: 1.6px;
+        }
+
+        strong {
+            color: #313550;
+            font-size: 7.2rem;
+            margin-right: 16px;
+        }
+
+        span {
+            color: #313550;
+            font-size: 3.2rem;
+        }
+    }
+
+    &__result {
+        margin-top: 80px;
+    }
+
+    &__image {
+        background-color: #F5E5D4;
+        padding: 200px;
+        width: 100%;
+        position: relative;
+
+        img {
+            position: relative;
+            z-index: 999;
+            width: 480px;
+            height: 480px;
+        }
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: #E60012;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            width: 400px;
+            height: 400px;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border: 5px solid #E60012;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            width: 424px;
+            height: 424px;
+        }
+    }
+}
