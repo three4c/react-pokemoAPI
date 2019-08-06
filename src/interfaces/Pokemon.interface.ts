@@ -10,6 +10,10 @@ export default interface Pokemon {
     speed: number,
     type01: string,
     type02: string,
+    flavorText: string,
     imageNumber: string,
-    existence: boolean
+    existence: boolean,
+    error: boolean,
+    notFound: boolean,
+    errorMessage: string
 }
