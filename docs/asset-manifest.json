@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "./static/css/main.fd62bd7a.chunk.css",
+    "main.js": "./static/js/main.6cca45f8.chunk.js",
+    "main.js.map": "./static/js/main.6cca45f8.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+    "static/js/2.a61b71c8.chunk.js": "./static/js/2.a61b71c8.chunk.js",
+    "static/js/2.a61b71c8.chunk.js.map": "./static/js/2.a61b71c8.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.0be0b48e0e4bf1e2894132a4f65ec4b9.js": "./precache-manifest.0be0b48e0e4bf1e2894132a4f65ec4b9.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/main.fd62bd7a.chunk.css.map": "./static/css/main.fd62bd7a.chunk.css.map",
+    "static/media/PokemonSearch.scss": "./static/media/bg.a3c8cecd.png"
+  }
+}

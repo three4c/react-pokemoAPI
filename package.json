@@ -2,7 +2,7 @@
   "name": "hoge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
+  "homepage": ".",
   "dependencies": {
     "@types/jest": "24.0.16",
     "@types/node": "12.6.9",
