@@ -1,0 +1,160 @@
+$mainColor: #313550;
+$infoColor: #f5e5d4;
+$red: #e60012;
+$white: #fff;
+
+.PokemonResult {
+  margin-top: 160px;
+
+  &__name {
+    color: $mainColor;
+    margin-bottom: 80px;
+
+    small {
+      display: block;
+      color: $mainColor;
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+    }
+
+    strong {
+      color: $mainColor;
+      font-size: 7.2rem;
+      margin-right: 16px;
+    }
+
+    span {
+      color: $mainColor;
+      font-size: 3.2rem;
+    }
+  }
+
+  &__info {
+    background-color: $infoColor;
+    padding: 80px;
+    margin-bottom: 160px;
+  }
+
+  &__image {
+    position: relative;
+    margin: 0 auto 80px;
+    width: 480px;
+    height: 480px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      background-color: $red;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      width: 400px;
+      height: 400px;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 5px solid $red;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      width: 424px;
+      height: 424px;
+    }
+  }
+
+  &__flavorText {
+    background-color: $white;
+    border: 4px solid $mainColor;
+    border-radius: 8px;
+
+    p {
+      color: $mainColor;
+      font-size: 2.4rem;
+      font-weight: 500;
+      padding: 32px 40px;
+      text-align: left;
+      line-height: 2;
+      letter-spacing: 1.6px;
+    }
+  }
+
+  &__numberType {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__id {
+    background-color: $mainColor;
+    border-radius: 4px;
+    color: #fff;
+    padding: 8px 16px;
+    margin-right: 24px;
+    font-size: 2.4rem;
+  }
+
+  &__type {
+    font-size: 2.4rem;
+    margin-left: 24px;
+  }
+
+  &__status {
+    display: flex;
+  }
+
+  &__list {
+    flex: 1;
+
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__statusName {
+    text-align: left;
+    font-size: 1.6rem;
+    flex: 1;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  &__barArea {
+    flex: 4;
+  }
+
+  &__bar {
+    background-color: $mainColor;
+    border-radius: 4px;
+    display: block;
+    height: 40px;
+  }
+}

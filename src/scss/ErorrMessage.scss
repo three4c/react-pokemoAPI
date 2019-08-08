@@ -1,0 +1,19 @@
+$red: #e60012;
+$white: #fff;
+
+.ErrorMessage {
+  background-color: $white;
+  border: 4px solid $red;
+  border-radius: 8px;
+  margin-top: 80px;
+
+  p {
+    color: $red;
+    font-size: 2.4rem;
+    font-weight: 500;
+    padding: 32px 40px;
+    text-align: left;
+    line-height: 2;
+    letter-spacing: 1.6px;
+  }
+}
