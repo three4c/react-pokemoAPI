@@ -4,11 +4,12 @@ import "../scss/ErorrMessage.scss";
 
 export default class ErorrMessage extends Component<ErrorMessageInterface> {
   render() {
+    const { notFound, errorMessage } = this.props;
     return (
       <div>
-        {this.props.notFound && (
+        {notFound && (
           <div className="ErrorMessage">
-            <p>{this.props.errorMessage}</p>
+            <p>{errorMessage}</p>
           </div>
         )}
       </div>

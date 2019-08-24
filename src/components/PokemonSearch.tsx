@@ -27,7 +27,7 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
       existence: false,
       error: false,
       notFound: false,
-      errorMessage: "ポケモンを みつけることが できませんでした。"
+      errorMessage: ""
     };
 
     this.pokemonRef = React.createRef();
@@ -35,6 +35,7 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
 
   private onPokemonSearchButton = (): void => {
     const inputValue: string = this.pokemonRef.current.value;
+    let checkPokemonNullCounter: number = 0;
     let checkPokemonCounter: number = 0;
 
     for (let i in Pokedex) {
@@ -96,14 +97,25 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
           existence: true,
           notFound: false
         });
+      } else if (inputValue === "") {
+        checkPokemonNullCounter++;
       } else {
         checkPokemonCounter++;
       }
     }
+    if (checkPokemonNullCounter === Pokedex.length) {
+      this.setState({
+        notFound: true,
+        existence: false,
+        errorMessage: "ポケモンの なまえを にゅうりょくしてください。"
+      });
+    }
+
     if (checkPokemonCounter === Pokedex.length) {
       this.setState({
         notFound: true,
-        existence: false
+        existence: false,
+        errorMessage: inputValue + " というポケモンを みつけることが できませんでした。"
       });
     }
   };
@@ -115,8 +127,9 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
   }
 
   render() {
+    const { existence, notFound, errorMessage, nameJp, nameEn, imageNumber, flavorText, id, type01, type02, hp, attack, defense, spAttack, spDefense, speed } = this.state;
     return (
-      <div className={"PokemonSearch-wrapper" + (this.state.existence ? "" : " PokemonSearch-wrapper--center")}>
+      <div className={"PokemonSearch-wrapper" + (existence ? "" : " PokemonSearch-wrapper--center")}>
         <div className="PokemonSearch">
           <h1 className="PokemonSearch__title">POKEMON SEARCH</h1>
           <div className="PokemonSearch__area">
@@ -135,24 +148,24 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
             </button>
           </div>
           <ErorrMessage
-            notFound={this.state.notFound}
-            errorMessage={this.state.errorMessage}
+            notFound={notFound}
+            errorMessage={errorMessage}
           />
-          {this.state.existence && (
+          {existence && (
             <PokemonResult
-              nameJp={this.state.nameJp}
-              nameEn={this.state.nameEn}
-              imageNumber={this.state.imageNumber}
-              flavorText={this.state.flavorText}
-              id={this.state.id}
-              type01={this.state.type01}
-              type02={this.state.type02}
-              hp={this.state.hp}
-              attack={this.state.attack}
-              defense={this.state.defense}
-              spAttack={this.state.spAttack}
-              spDefense={this.state.spDefense}
-              speed={this.state.speed}
+              nameJp={nameJp}
+              nameEn={nameEn}
+              imageNumber={imageNumber}
+              flavorText={flavorText}
+              id={id}
+              type01={type01}
+              type02={type02}
+              hp={hp}
+              attack={attack}
+              defense={defense}
+              spAttack={spAttack}
+              spDefense={spDefense}
+              speed={speed}
             />
           )}
         </div>

@@ -32,8 +32,9 @@ $white: #fff;
 
   &__info {
     background-color: $infoColor;
+    border-radius: 8px;
     padding: 80px;
-    margin-bottom: 160px;
+    margin-bottom: 80px;
   }
 
   &__image {
@@ -41,6 +42,8 @@ $white: #fff;
     margin: 0 auto 80px;
     width: 480px;
     height: 480px;
+    border-radius: 50%;
+
 
     img {
       position: absolute;
@@ -51,21 +54,6 @@ $white: #fff;
       z-index: 2;
     }
 
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      background-color: $red;
-      border-radius: 50%;
-      content: "";
-      display: block;
-      width: 400px;
-      height: 400px;
-    }
-
     &::after {
       position: absolute;
       top: 0;
@@ -73,7 +61,7 @@ $white: #fff;
       right: 0;
       bottom: 0;
       margin: auto;
-      border: 5px solid $red;
+      border: 24px solid $infoColor;
       border-radius: 50%;
       content: "";
       display: block;
@@ -92,7 +80,7 @@ $white: #fff;
       font-size: 2.4rem;
       font-weight: 500;
       padding: 32px 40px;
-      text-align: left;
+      text-align: justify;
       line-height: 2;
       letter-spacing: 1.6px;
     }
@@ -101,7 +89,8 @@ $white: #fff;
   &__numberType {
     display: flex;
     align-items: center;
-    margin-bottom: 80px;
+    justify-content: space-between;
+    margin-bottom: 40px;
   }
 
   &__id {
@@ -109,43 +98,43 @@ $white: #fff;
     border-radius: 4px;
     color: #fff;
     padding: 8px 16px;
-    margin-right: 24px;
     font-size: 2.4rem;
   }
 
   &__type {
+    border-radius: 4px;
+    color: #fff;
     font-size: 2.4rem;
     margin-left: 24px;
-  }
-
-  &__status {
-    display: flex;
+    padding: 8px 16px;
+    white-space: nowrap;
   }
 
   &__list {
-    flex: 1;
-
-    &:not(:last-child) {
-      margin-right: 32px;
-    }
+     display: flex;
+     flex-wrap: wrap;
   }
 
   &__item {
     display: flex;
     align-items: center;
+    width: calc(100% / 2 - 32px);
+
+    &:nth-child(odd) {
+      margin-right: 32px;
+    }
 
     &:not(:last-child) {
       margin-bottom: 24px;
     }
   }
 
-  &__statusName {
-    text-align: left;
-    font-size: 1.6rem;
-    flex: 1;
-    margin-right: 8px;
-    white-space: nowrap;
-  }
+  // &__statusName {
+  //   text-align: left;
+  //   font-size: 1.6rem;
+  //   flex: 1;
+  //   margin-right: 8px;
+  // }
 
   &__barArea {
     flex: 4;
