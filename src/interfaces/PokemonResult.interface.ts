@@ -2,8 +2,7 @@ export default interface PokemonResultInterface {
   id: number;
   nameJp: string;
   nameEn: string;
-  type01: string;
-  type02: string;
+  type: string[];
   flavorText: string;
   imageNumber: string;
   hp: number;

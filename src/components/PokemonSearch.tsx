@@ -20,8 +20,7 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
       spAttack: null,
       spDefense: null,
       speed: null,
-      type01: "",
-      type02: "",
+      type: [],
       flavorText: "",
       imageNumber: "",
       existence: false,
@@ -42,21 +41,16 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
       if (Pokedex[i].name.japanese === inputValue) {
         const imageNumber: string = ("000" + Pokedex[i].id).slice(-3);
 
-        this.setState({
-          type02: ""
-        });
+        let typeAry: string[] = [];
 
-        for (let j in Types) {
-          if (Types[j].english === Pokedex[i].type[0]) {
-            this.setState({
-              type01: Types[j].japanese
-            });
-          }
-
-          if (Types[j].english === Pokedex[i].type[1]) {
-            this.setState({
-              type02: Types[j].japanese
-            });
+        for (let k in Pokedex[i].type) {
+          for (let j in Types) {
+            if (Pokedex[i].type[k] === Types[j].english) {
+              typeAry.push(Types[j].japanese);
+              this.setState({
+                type: typeAry
+              })
+            }
           }
         }
 
@@ -127,7 +121,7 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
   }
 
   render() {
-    const { existence, notFound, errorMessage, nameJp, nameEn, imageNumber, flavorText, id, type01, type02, hp, attack, defense, spAttack, spDefense, speed } = this.state;
+    const { existence, notFound, errorMessage, nameJp, nameEn, imageNumber, flavorText, id, type, hp, attack, defense, spAttack, spDefense, speed } = this.state;
     return (
       <div className={"PokemonSearch-wrapper" + (existence ? "" : " PokemonSearch-wrapper--center")}>
         <div className="PokemonSearch">
@@ -158,8 +152,7 @@ export default class PokemonSearch extends Component<{}, PokemonSearchInterface>
               imageNumber={imageNumber}
               flavorText={flavorText}
               id={id}
-              type01={type01}
-              type02={type02}
+              type={type}
               hp={hp}
               attack={attack}
               defense={defense}

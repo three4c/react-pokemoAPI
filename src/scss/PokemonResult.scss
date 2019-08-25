@@ -129,12 +129,12 @@ $white: #fff;
     }
   }
 
-  // &__statusName {
-  //   text-align: left;
-  //   font-size: 1.6rem;
-  //   flex: 1;
-  //   margin-right: 8px;
-  // }
+  &__statusName {
+    text-align: left;
+    font-size: 1.6rem;
+    flex: 1;
+    margin-right: 8px;
+  }
 
   &__barArea {
     flex: 4;

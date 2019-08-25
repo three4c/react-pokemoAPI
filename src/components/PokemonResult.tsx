@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PokemonResultInterface from "../interfaces/PokemonResult.interface";
 import PokemonStatusName from '../components/PokemonStatusName';
 import PokemonStatusStyle from '../components/PokemonStatusStyle';
+import PokemonType from '../components/PokemonType';
 import "../scss/PokemonResult.scss";
 
 export default class PokemonResult extends Component<PokemonResultInterface> {
@@ -105,7 +106,9 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
   }
 
   render() {
-    const { nameJp, nameEn, type01, type02, imageNumber, flavorText, id, hp, attack, defense, spAttack, spDefense, speed } = this.props;
+
+
+    const { nameJp, nameEn, type, imageNumber, flavorText, id, hp, attack, defense, spAttack, spDefense, speed } = this.props;
 
     const items = [
       { name: 'HP', value: { width: this.map(hp, 0, 255, 0, 100) + "%" } },
@@ -115,6 +118,8 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
       { name: 'とくぼう', value: { width: this.map(spDefense, 0, 255, 0, 100) + "%" } },
       { name: 'すばやさ', value: { width: this.map(speed, 0, 255, 0, 100) + "%" } }
     ];
+    console.log(typeof (this.props.type[0]));
+    console.log(typeof (items[0]));
 
     return (
       <div className="PokemonResult">
@@ -124,7 +129,7 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
           <span>だ！</span>
         </div>
         <div className="PokemonResult__info">
-          <div className="PokemonResult__image" style={{ backgroundColor: this.typeBgColor(type01).backgroundColor }}>
+          <div className="PokemonResult__image" style={{ backgroundColor: this.typeBgColor(type[0]).backgroundColor }}>
             <img
               src={`${process.env.PUBLIC_URL}/image/${imageNumber +
                 nameEn}.png`}
@@ -140,15 +145,14 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
             ぜんこくずかん No. {id}
           </li>
           <li className="PokemonResult__right">
-            <span className="PokemonResult__type" style={{ backgroundColor: this.typeBgColor(type01).backgroundColor }}>{type01}</span>
-            {type02 && (
-              <span className="PokemonResult__type" style={{ backgroundColor: this.typeBgColor(type02).backgroundColor }}>{type02}</span>
-            )}
+            {type.map((item, i) => {
+              return <PokemonType key={i} typeBgColor={{ backgroundColor: this.typeBgColor(item).backgroundColor }} type={item} />
+            })}
           </li>
         </ul>
         <ul className="PokemonResult__list">
-          {items.map((item) => (
-            <li className="PokemonResult__item">
+          {items.map((item, i) => (
+            <li key={i} className="PokemonResult__item">
               <PokemonStatusName statusName={item.name} />
               <PokemonStatusStyle statusBarStyle={item.value} />
             </li>
