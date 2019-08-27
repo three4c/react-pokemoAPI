@@ -114,7 +114,7 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
 
     const { nameJp, nameEn, type, imageNumber, flavorText, id, hp, attack, defense, spAttack, spDefense, speed } = this.props;
 
-    const items = [
+    const statusBarStyleItems = [
       { name: 'HP', value: { width: this.map(hp, 0, 255, 0, 100) + "%" } },
       { name: 'こうげき', value: { width: this.map(attack, 0, 255, 0, 100) + "%" } },
       { name: 'ぼうぎょ', value: { width: this.map(defense, 0, 255, 0, 100) + "%" } },
@@ -122,6 +122,17 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
       { name: 'とくぼう', value: { width: this.map(spDefense, 0, 255, 0, 100) + "%" } },
       { name: 'すばやさ', value: { width: this.map(speed, 0, 255, 0, 100) + "%" } }
     ];
+
+    const pokemonTypeItems = type.map((item, i) => (
+      <PokemonType key={i} typeBgColor={{ backgroundColor: this.typeBgColor(item).backgroundColor }} type={item} />
+    ));
+
+    const pokemonStatusItems = statusBarStyleItems.map((item, i) => (
+      <li key={i} className="PokemonResult__item">
+        <PokemonStatusName statusName={item.name} />
+        <PokemonStatusStyle statusBarStyle={item.value} />
+      </li>
+    ))
 
     return (
       <div className="PokemonResult">
@@ -133,18 +144,11 @@ export default class PokemonResult extends Component<PokemonResultInterface> {
         <div className="PokemonResult__numberType">
           <PokemonId id={id} />
           <div className="PokemonResult__right">
-            {type.map((item, i) => {
-              return <PokemonType key={i} typeBgColor={{ backgroundColor: this.typeBgColor(item).backgroundColor }} type={item} />
-            })}
+            {pokemonTypeItems}
           </div>
         </div>
         <ul className="PokemonResult__list">
-          {items.map((item, i) => (
-            <li key={i} className="PokemonResult__item">
-              <PokemonStatusName statusName={item.name} />
-              <PokemonStatusStyle statusBarStyle={item.value} />
-            </li>
-          ))}
+          {pokemonStatusItems}
         </ul>
       </div>
     );
